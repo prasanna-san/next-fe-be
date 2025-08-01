@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# User Management App with Frontend and Backend
+
+A simple user management application built with Next.js that demonstrates both frontend and backend functionality.
+
+## Features
+
+- **Add Users**: Create new users with name and age
+- **Edit Users**: Click the edit button to modify user details inline
+- **Delete Users**: Remove users with confirmation dialog
+- **Real-time Updates**: Changes are immediately reflected in the UI
+- **Error Handling**: Proper error messages for failed operations
+- **Responsive Design**: Works on desktop and mobile devices
+- **Form Validation**: Age validation (0-150) and required fields
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS
+- **Backend**: Next.js API Routes
+- **Data Storage**: In-memory storage (for demo purposes)
+
+## Project Structure
+
+```
+my-app/
+├── app/
+│   ├── api/
+│   │   └── users/
+│   │       ├── route.ts          # GET /api/users, POST /api/users
+│   │       └── [id]/
+│   │           └── route.ts      # PUT /api/users/[id], DELETE /api/users/[id]
+│   ├── page.tsx                  # Main page component
+│   └── layout.tsx                # Root layout
+├── components/
+│   ├── AddUser.tsx              # Form component for adding users
+│   ├── User.tsx                 # Individual user item component
+│   └── UserList.tsx             # Main user list component
+├── lib/
+│   └── users.ts                 # Shared data store and helper functions
+└── package.json
+```
+
+## API Endpoints
+
+### GET /api/users
+Returns all users.
+
+**Response:**
+```json
+[
+  {
+    "id": "1234567890",
+    "name": "John Doe",
+    "age": 25,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
+]
+```
+
+### POST /api/users
+Creates a new user.
+
+**Request Body:**
+```json
+{
+  "name": "John Doe",
+  "age": 25
+}
+```
+
+**Response:**
+```json
+{
+  "id": "1234567890",
+  "name": "John Doe",
+  "age": 25,
+  "createdAt": "2024-01-01T00:00:00.000Z"
+}
+```
+
+### PUT /api/users/[id]
+Updates a user.
+
+**Request Body:**
+```json
+{
+  "name": "Jane Doe",
+  "age": 30
+}
+```
+
+### DELETE /api/users/[id]
+Deletes a user.
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Add a User**: Fill in the name and age fields, then click "Add User"
+2. **Edit a User**: Click the "Edit" button, modify the details, and click "Save"
+3. **Delete a User**: Click the "Delete" button and confirm the action
 
-## Learn More
+## Development
 
-To learn more about Next.js, take a look at the following resources:
+- The application uses Next.js API routes for the backend
+- Data is stored in memory (resets on server restart)
+- All components are built with TypeScript for type safety
+- Styling is done with Tailwind CSS for a modern, responsive design
+- Form validation ensures data integrity
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Future Enhancements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Add persistent storage (database)
+- Add user authentication
+- Add user profiles with more fields
+- Add search and filtering
+- Add pagination for large user lists
+- Add dark mode support
+- Add user statistics and analytics
