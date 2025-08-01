@@ -98,12 +98,21 @@ Deletes a user.
    npm install
    ```
 
-2. **Run the development server:**
+2. **Set up environment variables:**
+   ```bash
+   cp env.example .env.local
+   ```
+   Then edit `.env.local` and add your MongoDB connection string:
+   ```
+   MONGODB_URI=your_mongodb_connection_string_here
+   ```
+
+3. **Run the development server:**
    ```bash
    npm run dev
    ```
 
-3. **Open your browser:**
+4. **Open your browser:**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## Usage
